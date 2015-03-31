@@ -1,0 +1,17 @@
+    <IfModule mod_rewrite.c>  
+    RewriteEngine on
+	RewriteBase /edocument_simple
+	
+	#Removes access to the system folder by users.  
+    RewriteCond %{REQUEST_URI} ^system.*  
+    RewriteRule ^(.*)$ /index.php/$1 [L]  
+	
+	#Checks to see if the user is attempting to access a valid file,  
+    RewriteCond %{REQUEST_FILENAME} !-f  
+    RewriteCond %{REQUEST_FILENAME} !-d  
+	
+	#Enable access to the images and css folders, and the robots.txt file  
+	#RewriteCond $1 !^(index\.php|application\/themes|)  
+	
+	RewriteRule .* index.php/$0 [PT,L]  
+    </IfModule>  

@@ -1,0 +1,9 @@
+    <IfModule mod_rewrite.c>  
+    RewriteEngine On  
+
+     
+
+	RewriteCond $1 !^(index\.php|application\/themes|)  
+    #RewriteRule ^(.*)$ index.php/$1 [L]  
+	
+    </IfModule>  
