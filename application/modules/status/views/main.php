@@ -20,8 +20,6 @@
                                 <tr>
                                     <th>Kode</th>
                                     <th>Nama Status Dokumen</th>
-                                    <th></th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -29,8 +27,6 @@
                                         <tr class="">
                                             <td><?php echo $st->id_status ?></td>
                                             <td><?php echo $st->nama_status ?></td>
-                                            <td></td>
-                                            <td></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
