@@ -28,9 +28,7 @@
                         <td><?php echo $doc->tanggal_dokumen?></td>
               
                         <td class="center hidden-phone">      
-                            <?php echo $doc->getversiondok;
-                                
-                            ?>
+                            <?php echo $doc->getversiondok; ?>
                         </td></td>
                         <td class="center hidden-phone"><?php echo $doc->nama_status?></td>
                         <td class="center">        

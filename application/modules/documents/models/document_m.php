@@ -28,9 +28,6 @@ class Document_m extends MY_Model {
         return $this->_select($query,array($id_status));
     }
     
-    
-    
-    
     public function getShareDocumentbyDepart($id_departemen)
     {
         $query="select * from dokumen d, share s where d.id_dokumen=s.id_dokumen
@@ -121,10 +118,11 @@ class Document_m extends MY_Model {
     
     public function getTrashDocument()
     {
-        $query = "select *,getversiondok(d.id_dokumen) from dokumen d,status s 
+        $query = "select *,getversiondok(d.id_dokumen) as getversiondok from dokumen d,status s
             where s.id_status=? and d.id_status=s.id_status";
         return $this->_select($query,array(1)); // 1: Ditolak/Sampah
     }
+	
     public function getDocumentbyId($id)
     {
         $query = "select * from dokumen where id_dokumen=?";

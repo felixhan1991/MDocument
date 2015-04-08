@@ -77,19 +77,18 @@ class Form extends Admin_Controller
 		$data['files']=$this->file_m->getFilesFromIdDocument($id);
 		$data['version']=$this->file_m->getNumberVersion($id);
 		$data['reviews'] = $this->review_m->getReviews($id);
+		
 		$this->form_validation->set_rules('judul', 'Form Check', 'callback_actionUpdate');
 		$result_val=$this->form_validation->run();
 		if ($result_val == FALSE)
 		{
-			
 			$this->display('form_edit',$data);
 		}
 		else
 		{
 			$this->session->set_flashdata('message', "Data telah tersimpan!");
-			redirect(base_url().'documents','refresh');
+			redirect(base_url().'documents');
 		}
-		
 	}
 	
 	public function editFiles($id)
@@ -100,9 +99,8 @@ class Form extends Admin_Controller
 		$data['files']=$this->file_m->getFilesFromIdDocument($id);
 		$data['lampiran']=$this->file_m->getReferensiFromIdDocument($id);
 			
-			$this->display('form_file_edit',$data);
+		$this->display('form_file_edit',$data);
 	}
-	
 	
 	public function actionUpdate()
 	{

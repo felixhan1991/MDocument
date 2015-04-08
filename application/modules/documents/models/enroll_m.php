@@ -1,36 +1,34 @@
 <?php (defined('BASEPATH')) OR exit('No direct script access allowed');
 
-
-
-class Enroll_m extends MY_Model {
-    
-    public function __construct() {
+class Enroll_m extends MY_Model
+{    
+    public function __construct()
+	{
         parent::__construct();
         $this->table='enroll';
     }
     
-     public function getDrafter($id_dokumen)
+    public function getDrafter($id_dokumen)
     {
         $query = "select id_akun from dokumen d, enroll e where d.id_dokumen = e.id_dokumen and d.id_dokumen=? and e.id_role=?";
         $results = $this->_select($query,array($id_dokumen,1));
         $drafter=array();
         foreach ($results as $r)
         {
-            array_push($drafter,$this->getAkunbyId($r->id_akun));
-        }
+			$drafter = array_merge($drafter, $this->getAkunbyId($r->id_akun));
+        } 
         return $drafter;
     }
     
     public function getIdDrafter($id_dokumen)
     {
         $res = $this->getDrafter($id_dokumen);
-        $data = array();
+		$data = array();
         foreach ($res as $r)
         {
-            array_push($data, $r->id_akun);
+			array_push($data, $r->id_akun);
         }
         return $data;
-        
     }
     
     public function getReviewer($id_dokumen)
@@ -40,7 +38,7 @@ class Enroll_m extends MY_Model {
         $reviewer=array();
         foreach ($results as $r)
         {
-            array_push($reviewer,$this->getAkunbyId($r->id_akun));
+            $reviewer = array_merge($reviewer, $this->getAkunbyId($r->id_akun));
         }
         return $reviewer;
     }
@@ -54,8 +52,8 @@ class Enroll_m extends MY_Model {
             array_push($data, $r->id_akun);
         }
         return $data;
-        
     }
+	
     public function getApproval($id_dokumen)
     {
         $query = "select id_akun from dokumen d, enroll e where d.id_dokumen = e.id_dokumen and d.id_dokumen=? and e.id_role=?";
@@ -63,7 +61,7 @@ class Enroll_m extends MY_Model {
         $approval=array();
         foreach ($results as $r)
         {
-            array_push($approval,$this->getAkunbyId($r->id_akun));
+            $approval = array_merge($approval, $this->getAkunbyId($r->id_akun));
         }
         return $approval;
     }
